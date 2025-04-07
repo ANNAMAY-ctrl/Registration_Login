@@ -8,8 +8,9 @@ package com.auth;
         
 public class Login {
       private static Login instance;  // Singleton instance
-   private String[][] users = new String[200][2];
+   private String[][] users = new String[200][4];
    private int userCount = 0;
+   private int index = -1;
    
    private Login() {}  // Private constructor
 
@@ -31,7 +32,7 @@ public class Login {
        return password.matches("^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{8,}$");
     }
     
-    public String registerUser(String username, String password){
+    public String registerUser(String username, String password, String firstName, String lastName){
        boolean isValidUser = checkUserName(username);
         boolean isValidPassword = checkPasswordComplexity(password);
         
@@ -45,6 +46,8 @@ public class Login {
             if (userCount < users.length) {
                 users[userCount][0] = username; // Store username
                 users[userCount][1] = password; // Store password
+                users[userCount][2] = firstName;
+                users[userCount][3] = lastName;
                 userCount++;                
             return "User has been successfully registered.";
         }else{
@@ -57,6 +60,7 @@ public class Login {
     public boolean loginUser(String username, String password){
         for (int i = 0; i < userCount;i++){
             if (users[i][0].equals(username) && users[i][0].equals(password)){
+                 index= i;
                 return true;
             }
         }
@@ -66,9 +70,11 @@ public class Login {
     public String returnLoginStatus(String username, String password){
         boolean loginStatus = loginUser(username, password);
         
-        if(loginStatus){
-            return "Login successful! Welcome back.";
+        if(loginStatus && index != -1){
+            String firstName = users[index][2];
+            String lastName = users[index][3];
+            return "Welcome " + firstName + ", " + lastName + "it is great to see you";
         }
-        return "Invalid username or password. Please try again.";
+        return "Incorrect username or password, please try again.";
     }
 }

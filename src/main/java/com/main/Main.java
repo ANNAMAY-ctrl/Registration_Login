@@ -181,7 +181,7 @@ String lastName = txtLast.getText().trim();
 
      Login loginSystem = Login.getInstance(); // Get the same instance
    
-   String userValidation = loginSystem.registerUser(username, pass);
+   String userValidation = loginSystem.registerUser(username, pass, firstName, lastName);
    
    System.out.println("Validation Result: " + userValidation);  // Debugging log
 

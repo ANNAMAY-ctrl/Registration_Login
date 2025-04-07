@@ -4,6 +4,7 @@
  */
 package com.main;
 import  com.auth.Login;
+import javax.swing.JOptionPane;
 /**
  *
  * @author mpoul
@@ -190,6 +191,12 @@ public class Log extends javax.swing.JFrame {
        
         
         logSystem.loginUser(username, password);
+        String status = logSystem.returnLoginStatus(username, password);
+        JOptionPane.showMessageDialog(this, status);
+        
+        if (logSystem.loginUser(username, password)){
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
