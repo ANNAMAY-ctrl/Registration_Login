@@ -23,12 +23,16 @@ public class Login {
    
     public boolean checkUserName(String username){
       
-       //Check username length>5 and if it contains underscore
-       return username.length() <= 5 && username.contains("_");
+       //Check username length is no more then 5 characters and if it contains underscore
+       return username.contains("_") && 5 >= username.length();
     }
     
     public boolean checkPasswordComplexity(String password){
-       
+       //regex
+       //^(?=.*[A-Z]) atleast one uppercase letter
+       //(?=.*\\d) atleast one digit 
+       //(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]) atleast one special character 
+       //.{8,}$ minimus 8 characters in total
        return password.matches("^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{8,}$");
     }
     
@@ -46,9 +50,9 @@ public class Login {
             if (userCount < users.length) {
                 users[userCount][0] = username; // Store username
                 users[userCount][1] = password; // Store password
-                users[userCount][2] = firstName;
-                users[userCount][3] = lastName;
-                userCount++;                
+                users[userCount][2] = firstName; // Store first name
+                users[userCount][3] = lastName;  // Store last name
+                userCount++;      //increment for new user           
             return "User has been successfully registered.";
         }else{
                  return "User database is full. Cannot register more users.";
@@ -59,7 +63,7 @@ public class Login {
       // Authenticating user by search 2D array
     public boolean loginUser(String username, String password){
         for (int i = 0; i < userCount;i++){
-            if (users[i][0].equals(username) && users[i][0].equals(password)){
+            if (users[i][0].equals(username) && users[i][1].equals(password)){
                  index= i;
                 return true;
             }
@@ -67,6 +71,7 @@ public class Login {
         return false;
     }
     
+    //Generating login status message 
     public String returnLoginStatus(String username, String password){
         boolean loginStatus = loginUser(username, password);
         

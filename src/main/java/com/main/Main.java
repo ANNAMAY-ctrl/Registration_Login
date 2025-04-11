@@ -170,13 +170,15 @@ return txtPassword.getText();
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
 
          System.out.println("Sign Up button clicked!");  // Debugging log
-String username = txtUserName.getText().trim();
-String pass = txtPassword.getText().trim();
-String firstName = txtFirst.getText().trim();
-String lastName = txtLast.getText().trim();
+         
+         //Retrieves and trims input from user
+           String username = txtUserName.getText().trim();
+           String pass = txtPassword.getText().trim();
+           String firstName = txtFirst.getText().trim();
+           String lastName = txtLast.getText().trim();
 
- System.out.println("Entered Username: " + username);
-    System.out.println("Entered Password: " + pass);
+           System.out.println("Entered Username: " + username); //Debugging log
+           System.out.println("Entered Password: " + pass);     //Debugging log
 
 
      Login loginSystem = Login.getInstance(); // Get the same instance

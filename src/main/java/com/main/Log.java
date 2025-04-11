@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
  * @author mpoul
  */
 public class Log extends javax.swing.JFrame {
+    // This declares a final instance  of the Login class and assigns it through the constructor
+    // 'logSystem' is used to access login-related methods from the Login class
    private final Login logSystem;
  public Log(Login logSystem) {
      this.logSystem = logSystem;
@@ -189,7 +191,7 @@ public class Log extends javax.swing.JFrame {
      String username = txtUsername.getText();
      String password = txtPassword.getText();
        
-        
+        //Calls loginUser method 
         logSystem.loginUser(username, password);
         String status = logSystem.returnLoginStatus(username, password);
         JOptionPane.showMessageDialog(this, status);
