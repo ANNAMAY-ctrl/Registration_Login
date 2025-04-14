@@ -15,10 +15,10 @@ public class Login {
    private Login() {}  // Private constructor
 
     public static Login getInstance() {
-        if (instance == null) {
-            instance = new Login();
+        if (instance == null) {    //Check if intance has been created
+            instance = new Login();  //Creates instance if its null
         }
-        return instance;
+        return instance;             //Return the single shared instance
     }
    
     public boolean checkUserName(String username){
