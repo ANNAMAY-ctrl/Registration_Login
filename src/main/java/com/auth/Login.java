@@ -78,7 +78,7 @@ public class Login {
         if(loginStatus && index != -1){
             String firstName = users[index][2];
             String lastName = users[index][3];
-            return "Welcome " + firstName + ", " + lastName + "it is great to see you";
+            return "Welcome " + firstName + ", " + lastName + " it is great to see you";
         }
         return "Incorrect username or password, please try again.";
     }
